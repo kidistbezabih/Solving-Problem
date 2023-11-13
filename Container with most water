@@ -1,0 +1,23 @@
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        vol = 0
+        right = len(height) - 1
+        left = 0
+        for i in range(len(height) - 1):
+            diff = right - left
+            if (min(height[left], height[right]) * diff) > vol:
+                vol = (min(height[left], height[right]) * diff)
+            if(height[left] > height[right]):
+                right -= 1
+            elif(height[left] == height[right]):
+                if(height[left+1] > height[right-1]):
+                    right -= 1
+                else:
+                    left += 1
+            else:
+                left += 1
+        return vol
