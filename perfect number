@@ -1,0 +1,27 @@
+class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        def splitNumber(num):
+            lis = []
+            while num > 9:
+                lis.append(num % 10)
+                num = int(num/10)
+            lis.append(num)
+            return lis
+        
+        def checked(i):
+            arr = splitNumber(i)
+            if 0 not in arr:
+                for j in range(len(arr)):
+                    if i % arr[j] == 0:
+                        continue
+                    else:
+
+                        return False
+                return True
+            return False
+
+        lis2 = []
+        for i in range(left, right+1):
+            if checked(i) == True:
+                lis2.append(i)
+        return( lis2)
