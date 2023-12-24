@@ -1,15 +1,9 @@
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
-        ln1 = len(word1)
-        ln2 = len(word2)
-        rem= ""
-        if ln1 >= ln2:
-            rem = word1
-        else:
-            rem = word2
-
-        newstr =  ''
-        for i in range(min(ln1, ln2)):
-            newstr += word1[i]
-            newstr += word2[i]
-        return (newstr + (rem[min(ln1, ln2):]))
+        merged =""
+        for i in range(max(len(word1), len(word2))):
+            if i < len(word1):
+                merged += word1[i]
+            if i < len(word2):
+                merged += word2[i]
+        return merged
