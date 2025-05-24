@@ -26,17 +26,13 @@ class Solution:
                     new_row,new_col = r+row, col+c
                     if not inbound(new_row, new_col):
                         continue
-                    if grid[new_row][new_col] == 1:
-                        flag = True
 
                     if inbound(new_row, new_col) and (new_row, new_col)not in visited and grid[new_row][new_col] == 1:
                         grid[new_row][new_col] = 2
+                        fresh -= 1
+                        flag = True
                         queue.append((new_row, new_col))
             if flag:
                 round += 1
-
-        for i in range(len(grid)):
-            for j in range(len(grid[0])):
-                if grid[i][j] == 1:
-                    return -1        
-        return round
+       
+        return round if fresh == 0 else -1
