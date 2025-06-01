@@ -13,14 +13,12 @@ class Solution:
         n = len(nums)
         left, right = 0, n - 1
         pivot = findIndex(left, right)
-        print(pivot)
-        
+
         if nums[pivot] <= target <= nums[-1]:
             left, right = pivot, n-1
         else:
             left, right = 0, pivot
-
-        print(right, left)
+            
 
         while left <= right:
             mid = left + (right - left)//2
