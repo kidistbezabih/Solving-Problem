@@ -3,12 +3,12 @@ class Solution:
         n = len(s)
         dp = {i:False for i in range(n+1)}
         dp[n] = True
-        wordDict = set(wordDict)
         
         for i in range(n-1, -1, -1):
-            for j in range(i+1, n+1):
-                if s[i:j] in wordDict and dp[j]:
-                    dp[i] = dp[j]
-                    break
+            for w in wordDict:
+                if i + len(w) <= n:
+                    if w == s[i:i+len(w)] and dp[i+len(w)]:
+                        dp[i] = dp[i+len(w)]
+                        break
         return dp[0]
             
