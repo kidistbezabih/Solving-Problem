@@ -7,7 +7,8 @@ class Solution:
         for r in range(n):
             if prices[r] < prices[l]:
                 l = r
-            ans = max(ans, prices[r] - prices[l])
+            else:
+                ans = max(ans, prices[r] - prices[l])
 
         return ans
             
